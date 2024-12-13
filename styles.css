@@ -1,0 +1,245 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #001f3f;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.elon-image {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#total {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 15px 20px;
+    z-index: 1000;
+    width: fit-content;
+    margin: 10px 0;
+    font-size: 1.5em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.fixed {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 350px;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    box-sizing: border-box;
+}
+
+.item:hover {
+    transform: scale(1.05);
+}
+
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 123, 255, 0.7);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: rgba(0, 123, 255, 1);
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.item h3 {
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.item p {
+    margin: 5px 0;
+}
+
+.item-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.item-buttons button {
+    flex: 1;
+    margin: 0;
+    padding: 8px 12px;
+}
+
+#cart-bubble {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    color: white;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#cart-bubble:hover {
+    transform: scale(1.05);
+}
+
+#view-cart {
+    background: #4CAF50;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    position: relative;
+    color: #333;
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#receipt-items {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#receipt-total {
+    margin-top: 20px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Animation classes */
+@keyframes buyStrobe {
+    0%, 100% { 
+        border-color: rgba(0, 255, 0, 0.5);
+    }
+    50% { 
+        box-shadow: 0 2px 20px rgba(0, 255, 0, 1);
+        border-color: rgba(0, 255, 0, 1);
+    }
+}
+
+@keyframes sellStrobe {
+    0%, 100% { 
+        border-color: rgba(255, 0, 0, 0.5);
+    }
+    50% { 
+        box-shadow: 0 2px 20px rgba(255, 0, 0, 1);
+        border-color: rgba(255, 0, 0, 1);
+    }
+}
+
+.item.buy-strobe {
+    animation: buyStrobe 0.5s ease-in-out;
+    border-color: rgba(0, 255, 0, 1);
+}
+
+.item.sell-strobe {
+    animation: sellStrobe 0.5s ease-in-out;
+    border-color: rgba(255, 0, 0, 1);
+}
